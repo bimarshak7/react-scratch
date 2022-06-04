@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.join(__dirname, 'index.js'),
+  entry: path.join(__dirname, 'index.jsx'),
   output: {
     path: __dirname,
     filename: 'main.js'
@@ -17,7 +17,24 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
 
+        test: /\.svg$/,
+
+        use: [
+
+          {
+
+            loader: 'svg-url-loader',
+
+            options: {
+
+              limit: 10000,
+
+            },
+          },
+        ],
+      }
     ]
   }
 }
