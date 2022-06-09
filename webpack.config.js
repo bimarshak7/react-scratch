@@ -1,10 +1,16 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.join(__dirname, 'index.jsx'),
-  output: {
-    path: __dirname,
-    filename: 'main.js'
+    output: {
+        path: path.join(__dirname, ''),
+        filename: 'main.js',
+    },
+    devServer: {
+    static: {
+      directory: path.join(__dirname, '/static'),
+    },
+    compress: true,
+    port: 3000,
   },
   module: {
     rules: [
@@ -18,19 +24,12 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-
         test: /\.svg$/,
-
         use: [
-
           {
-
             loader: 'svg-url-loader',
-
             options: {
-
               limit: 10000,
-
             },
           },
         ],
